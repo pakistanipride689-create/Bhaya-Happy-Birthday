@@ -2,376 +2,619 @@
 <html lang="ur">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday Bhaya 🌙</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel+Decorative:wght@400;700&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Happy Birthday Bhaya 🎂</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+* { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
 
-  :root {
-    --gold: #D4AF37;
-    --gold-light: #F5E196;
-    --gold-dim: #8B7520;
-    --deep: #06090F;
-    --navy: #0A1628;
-    --teal: #0D3B4A;
-    --cream: #F8F0DC;
-  }
+body {
+  background: #000;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  font-family: 'Cormorant Garamond', serif;
+}
 
-  body {
-    background: var(--deep);
-    color: var(--cream);
-    font-family: 'Cormorant Garamond', serif;
-    min-height: 100vh;
-    overflow-x: hidden;
-    cursor: default;
-  }
+/* ===== GIFT INTRO ===== */
+#giftIntro {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: #06090F;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: opacity 1s ease;
+}
+#giftIntro.hide { opacity: 0; pointer-events: none; }
 
-  /* Stars background */
-  .stars-bg {
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    background: radial-gradient(ellipse at 20% 30%, #0D3B4A 0%, transparent 60%),
-                radial-gradient(ellipse at 80% 70%, #1a0a2e 0%, transparent 60%),
-                var(--deep);
-  }
+.intro-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 40%, #0D2A3A 0%, transparent 65%);
+}
 
-  .star {
-    position: fixed;
-    border-radius: 50%;
-    background: white;
-    animation: twinkle var(--dur) ease-in-out infinite;
-    opacity: 0;
-  }
+.gift-wrap {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
 
-  @keyframes twinkle {
-    0%, 100% { opacity: 0; transform: scale(0.5); }
-    50% { opacity: var(--op); transform: scale(1); }
-  }
+.gbox {
+  position: relative;
+  width: 140px;
+  height: 150px;
+  animation: gfloat 2.5s ease-in-out infinite;
+  cursor: pointer;
+}
+@keyframes gfloat {
+  0%,100%{ transform: translateY(0); }
+  50%{ transform: translateY(-12px); }
+}
 
-  /* Ornamental border */
-  .ornament-top, .ornament-bottom {
-    position: fixed;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 2rem;
-    color: var(--gold);
-    opacity: 0.6;
-    z-index: 1;
-    letter-spacing: 1rem;
-  }
-  .ornament-top { top: 1.5rem; }
-  .ornament-bottom { bottom: 1.5rem; }
+.gbox-body {
+  position: absolute;
+  bottom: 0; left:50%;
+  transform: translateX(-50%);
+  width: 110px; height: 85px;
+  background: linear-gradient(160deg, #c0392b, #7B241C);
+  border-radius: 4px 4px 7px 7px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+}
+.gbox-body::before {
+  content:'';
+  position:absolute;
+  left:50%; top:0;
+  transform:translateX(-50%);
+  width:18px; height:100%;
+  background: linear-gradient(to bottom, #F5E196, #D4AF37);
+  border-radius: 2px;
+}
+.gbox-body::after {
+  content:'';
+  position:absolute;
+  left:0; top:50%;
+  transform:translateY(-50%);
+  width:100%; height:16px;
+  background: linear-gradient(to right, #F5E196, #D4AF37, #F5E196);
+  border-radius: 2px;
+}
+.gbox-lid {
+  position: absolute;
+  top: 25px; left: 50%;
+  transform: translateX(-50%);
+  width: 120px; height: 32px;
+  background: linear-gradient(160deg, #e74c3c, #c0392b);
+  border-radius: 5px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  animation: lidwiggle 2.5s ease-in-out infinite;
+}
+@keyframes lidwiggle {
+  0%,100%{ transform:translateX(-50%) rotate(0deg); }
+  25%{ transform:translateX(-50%) rotate(-3deg) translateY(-4px); }
+  75%{ transform:translateX(-50%) rotate(3deg) translateY(-4px); }
+}
+.gbox-lid::before {
+  content:'';
+  position:absolute;
+  left:50%; top:0;
+  transform:translateX(-50%);
+  width:18px; height:100%;
+  background: linear-gradient(to bottom, #F5E196, #D4AF37);
+}
+.gbox-lid::after {
+  content:'';
+  position:absolute;
+  left:0; top:50%;
+  transform:translateY(-50%);
+  width:100%; height:14px;
+  background: linear-gradient(to right, #F5E196, #D4AF37, #F5E196);
+}
+.bow {
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 80px; height: 40px;
+}
+.bow::before, .bow::after {
+  content:'';
+  position: absolute;
+  width: 32px; height: 22px;
+  background: linear-gradient(135deg, #F5E196, #D4AF37);
+  top: 5px;
+}
+.bow::before { left: 2px; transform: rotate(-20deg); border-radius: 50% 0 50% 50%; }
+.bow::after  { right:2px; transform: rotate( 20deg); border-radius: 0 50% 50% 50%; }
+.bow-center {
+  position: absolute;
+  width: 20px; height: 20px;
+  background: #F5E196;
+  border-radius: 50%;
+  top: 5px; left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 12px rgba(212,175,55,0.8);
+  z-index: 1;
+}
+.sp {
+  position: absolute;
+  font-size: 1.2rem;
+  animation: sppop var(--d) ease-in-out infinite var(--s);
+}
+@keyframes sppop {
+  0%,100%{ opacity:0.2; transform:scale(0.7); }
+  50%    { opacity:1;   transform:scale(1.2); }
+}
+.gift-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(1.3rem, 5vw, 2rem);
+  background: linear-gradient(135deg, #8B7520, #D4AF37, #F5E196);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+.gift-sub {
+  color: rgba(245,225,150,0.7);
+  font-style: italic;
+  font-size: clamp(0.9rem, 3vw, 1.1rem);
+  text-align: center;
+  letter-spacing: 0.15rem;
+}
+.tap-hint {
+  margin-top: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  animation: bounce 1.6s ease-in-out infinite;
+}
+@keyframes bounce {
+  0%,100%{ opacity:0.5; transform:translateY(0); }
+  50%    { opacity:1;   transform:translateY(5px); }
+}
+.tap-hint span {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.25rem;
+  color: rgba(212,175,55,0.8);
+  text-transform: uppercase;
+}
+.tap-arrow { color: rgba(212,175,55,0.7); font-size: 1.3rem; }
+.istar {
+  position: absolute;
+  border-radius: 50%;
+  background: #fff;
+  opacity: 0;
+  animation: stw var(--d) ease-in-out infinite var(--s);
+}
+@keyframes stw {
+  0%,100%{ opacity:0; }
+  50%    { opacity:var(--o); }
+}
 
-  /* Main container */
-  .container {
-    position: relative;
-    z-index: 2;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 5rem 2rem;
-  }
+/* ===== SLIDESHOW ===== */
+#slideshow {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  background: #000;
+}
+.slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  z-index: 1;
+  transition: opacity 1.5s ease-in-out;
+}
+.slide.active {
+  opacity: 1;
+  z-index: 2;
+}
+.slide img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.slide::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.5) 100%);
+  pointer-events: none;
+}
+#progressWrap {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: 10;
+  height: 3px;
+  background: rgba(255,255,255,0.1);
+}
+#progressBar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(to right, rgba(212,175,55,0.5), #D4AF37);
+  transition: none;
+}
 
-  /* Moon & header */
-  .moon-wrap {
-    text-align: center;
-    margin-bottom: 2rem;
-    opacity: 0;
-    animation: fadeDown 1.2s ease forwards 0.5s;
-  }
-  .moon-icon {
-    font-size: 4rem;
-    display: block;
-    animation: moonGlow 3s ease-in-out infinite;
-  }
-  @keyframes moonGlow {
-    0%, 100% { text-shadow: 0 0 20px rgba(212,175,55,0.4); }
-    50% { text-shadow: 0 0 50px rgba(212,175,55,0.9), 0 0 80px rgba(212,175,55,0.4); }
-  }
-
-  .title-arabic {
-    font-family: 'Amiri', serif;
-    font-size: clamp(1.2rem, 3vw, 1.8rem);
-    color: var(--gold-light);
-    letter-spacing: 0.3rem;
-    margin-top: 0.5rem;
-    opacity: 0.8;
-  }
-
-  /* Happy Birthday header */
-  .hb-title {
-    font-family: 'Cinzel Decorative', serif;
-    font-size: clamp(2rem, 6vw, 4.5rem);
-    background: linear-gradient(135deg, var(--gold-dim), var(--gold), var(--gold-light), var(--gold));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-align: center;
-    line-height: 1.2;
-    margin-bottom: 0.5rem;
-    opacity: 0;
-    animation: fadeDown 1.2s ease forwards 0.8s;
-  }
-
-  .hb-subtitle {
-    font-size: clamp(1rem, 2.5vw, 1.4rem);
-    color: var(--gold);
-    text-align: center;
-    letter-spacing: 0.4rem;
-    margin-bottom: 3rem;
-    opacity: 0;
-    animation: fadeDown 1.2s ease forwards 1.1s;
-    font-style: italic;
-  }
-
-  /* Gold divider */
-  .divider {
-    width: 60%;
-    max-width: 400px;
-    height: 1px;
-    background: linear-gradient(to right, transparent, var(--gold), transparent);
-    margin: 0 auto 3rem;
-    opacity: 0;
-    animation: fadeIn 1.5s ease forwards 1.4s;
-    position: relative;
-  }
-  .divider::before {
-    content: '✦';
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    background: var(--deep);
-    padding: 0 1rem;
-    color: var(--gold);
-    font-size: 1rem;
-  }
-
-  /* Message card */
-  .message-card {
-    max-width: 720px;
-    width: 100%;
-    background: linear-gradient(135deg, rgba(13,59,74,0.3) 0%, rgba(26,10,46,0.3) 100%);
-    border: 1px solid rgba(212,175,55,0.25);
-    border-radius: 4px;
-    padding: 3rem 3.5rem;
-    position: relative;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 0 60px rgba(212,175,55,0.08), inset 0 0 60px rgba(0,0,0,0.3);
-  }
-
-  /* Corner ornaments */
-  .message-card::before, .message-card::after {
-    content: '❋';
-    position: absolute;
-    color: var(--gold);
-    font-size: 1.5rem;
-    opacity: 0.5;
-  }
-  .message-card::before { top: 1rem; left: 1rem; }
-  .message-card::after { bottom: 1rem; right: 1rem; }
-
-  /* Lines of message */
-  .msg-line {
-    display: block;
-    opacity: 0;
-    transform: translateY(12px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-    line-height: 1.9;
-    font-size: clamp(0.95rem, 2vw, 1.15rem);
-    color: var(--cream);
-    margin-bottom: 0.15rem;
-  }
-  .msg-line.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  .msg-line.highlight {
-    color: var(--gold-light);
-    font-style: italic;
-    font-size: clamp(1rem, 2.2vw, 1.25rem);
-  }
-  .msg-line.bold-line {
-    color: var(--gold);
-    font-weight: 600;
-  }
-  .msg-emoji {
-    font-size: 1.3em;
-    vertical-align: middle;
-  }
-
-  /* CTA Button */
-  .cta-wrap {
-    text-align: center;
-    margin-top: 3.5rem;
-    opacity: 0;
-    transition: opacity 1s ease;
-  }
-  .cta-wrap.show { opacity: 1; }
-
-  .cta-btn {
-    display: inline-block;
-    padding: 1rem 3rem;
-    border: 1px solid var(--gold);
-    color: var(--gold);
-    font-family: 'Cinzel Decorative', serif;
-    font-size: 0.9rem;
-    letter-spacing: 0.2rem;
-    text-decoration: none;
-    background: transparent;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    transition: color 0.4s ease;
-    text-transform: uppercase;
-  }
-  .cta-btn::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: var(--gold);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.4s ease;
-    z-index: -1;
-  }
-  .cta-btn:hover { color: var(--deep); }
-  .cta-btn:hover::before { transform: scaleX(1); }
-
-  @keyframes fadeDown {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-
-  /* Floating particles */
-  .particle {
-    position: fixed;
-    pointer-events: none;
-    font-size: 1.2rem;
-    z-index: 1;
-    animation: floatUp var(--dur) ease-in var(--delay) infinite;
-    opacity: 0;
-  }
-  @keyframes floatUp {
-    0% { opacity: 0; transform: translateY(100vh) rotate(0deg); }
-    10% { opacity: 0.7; }
-    90% { opacity: 0.3; }
-    100% { opacity: 0; transform: translateY(-20px) rotate(360deg); }
-  }
+/* ===== FINAL SCREEN ===== */
+#finalScreen {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: #06090F;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1.5s ease;
+}
+#finalScreen.show { opacity:1; pointer-events:all; }
+.final-bg {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 40%, #0D2A3A 0%, transparent 70%);
+}
+.final-inner {
+  position: relative; z-index: 1;
+  text-align: center;
+  max-width: 600px;
+  width: 100%;
+}
+.final-moon {
+  font-size: clamp(3rem, 10vw, 5rem);
+  display: block;
+  margin-bottom: 1rem;
+  animation: mglow 2.5s ease-in-out infinite;
+}
+@keyframes mglow {
+  0%,100%{ text-shadow: 0 0 20px rgba(212,175,55,0.3); }
+  50%    { text-shadow: 0 0 60px rgba(212,175,55,0.8); }
+}
+.final-h {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(1.4rem, 6vw, 2.8rem);
+  background: linear-gradient(135deg, #8B7520, #D4AF37, #F5E196, #D4AF37);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.4;
+  margin-bottom: 1rem;
+}
+.final-div {
+  width: 180px; height: 1px;
+  background: linear-gradient(to right, transparent, #D4AF37, transparent);
+  margin: 1rem auto 1.2rem;
+}
+.final-msg {
+  color: #F8F0DC;
+  font-size: clamp(1rem, 3vw, 1.3rem);
+  line-height: 1.8;
+  font-style: italic;
+  margin-bottom: 1.5rem;
+}
+.final-treat {
+  display: inline-block;
+  padding: 1rem 1.8rem;
+  border: 1.5px solid #D4AF37;
+  background: rgba(212,175,55,0.07);
+  color: #F5E196;
+  font-family: 'Amiri', serif;
+  font-size: clamp(1rem, 3.5vw, 1.3rem);
+  line-height: 1.8;
+  border-radius: 4px;
+  animation: tglow 2s ease-in-out infinite;
+}
+@keyframes tglow {
+  0%,100%{ box-shadow: 0 0 10px rgba(212,175,55,0.15); }
+  50%    { box-shadow: 0 0 35px rgba(212,175,55,0.45); }
+}
+.back-link {
+  display: inline-block;
+  margin-top: 1.8rem;
+  color: rgba(212,175,55,0.6);
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.15rem;
+  text-decoration: none;
+  border: 1px solid rgba(212,175,55,0.3);
+  padding: 0.6rem 1.5rem;
+}
+.cf {
+  position: fixed;
+  z-index: 55;
+  border-radius: 2px;
+  animation: cfall var(--d) ease-in var(--s) forwards;
+  opacity: 0;
+}
+@keyframes cfall {
+  0%  { opacity:1; transform: translateY(-10px) rotate(0deg) translateX(0); }
+  100%{ opacity:0; transform: translateY(105vh) rotate(540deg) translateX(var(--tx)); }
+}
 </style>
 </head>
 <body>
 
-<div class="stars-bg"></div>
+<!-- GIFT INTRO -->
+<div id="giftIntro" onclick="openGift()">
+  <div class="intro-bg"></div>
+  <div id="introStarsBg" style="position:absolute;inset:0;overflow:hidden;z-index:0;"></div>
 
-<div class="ornament-top">✦ ✦ ✦</div>
-<div class="ornament-bottom">✦ ✦ ✦</div>
+  <div class="gift-wrap">
+    <div class="gbox">
+      <span class="sp" style="top:-8px;left:8px;--d:1.8s;--s:0s">✨</span>
+      <span class="sp" style="top:-14px;right:4px;--d:2.2s;--s:0.5s">⭐</span>
+      <span class="sp" style="top:28px;left:-18px;--d:1.5s;--s:0.3s">✦</span>
+      <span class="sp" style="top:18px;right:-16px;--d:2s;--s:0.8s">✨</span>
+      <span class="sp" style="bottom:8px;left:-14px;--d:1.7s;--s:1s">⭐</span>
+      <span class="sp" style="bottom:4px;right:-10px;--d:2.3s;--s:0.2s">✦</span>
+      <div class="gbox-body"></div>
+      <div class="gbox-lid"></div>
+      <div class="bow"><div class="bow-center"></div></div>
+    </div>
 
-<div class="container">
+    <div class="gift-title">Happy Birthday!</div>
+    <div class="gift-sub">Bhaya ka ek khaas tohfa 🎁</div>
 
-  <div class="moon-wrap">
-    <span class="moon-icon">🌙</span>
-
+    <div class="tap-hint">
+      <span>Tap to Open</span>
+      <div class="tap-arrow">▼</div>
+    </div>
   </div>
+</div>
 
-  <h1 class="hb-title">Happy Birthday</h1>
-  <div class="hb-subtitle">Bhaya ✨</div>
+<!-- SLIDESHOW -->
+<div id="slideshow"></div>
+<div id="progressWrap"><div id="progressBar"></div></div>
 
-  <div class="divider"></div>
-
-  <div class="message-card">
-    <span class="msg-line highlight" data-delay="2000">🌙 Happy Birthday Bhaya!</span>
-    <span class="msg-line" data-delay="2800">On this special day that Allah has blessed you with,</span>
-    <span class="msg-line" data-delay="3400">I reflect on what a wonderful brother you are.</span>
-    <span class="msg-line" data-delay="4200">&nbsp;</span>
-    <span class="msg-line highlight" data-delay="4600">You have been my protector, my guide, and my friend</span>
-    <span class="msg-line highlight" data-delay="5200">through every chapter of our lives.</span>
-    <span class="msg-line" data-delay="6000">&nbsp;</span>
-    <span class="msg-line" data-delay="6400">May Allah fill your new year with endless blessings</span>
-    <span class="msg-line" data-delay="7000">and surround you with love, health, and prosperity.</span>
-    <span class="msg-line" data-delay="7700">May your faith deepen, your heart find peace,</span>
-    <span class="msg-line" data-delay="8300">and your path always be guided toward righteousness.</span>
-    <span class="msg-line" data-delay="9100">&nbsp;</span>
-    <span class="msg-line" data-delay="9500">The kindness you show to others never goes unnoticed,</span>
-    <span class="msg-line" data-delay="10200">and I hope life returns that same warmth to you tenfold.</span>
-    <span class="msg-line" data-delay="11000">&nbsp;</span>
-    <span class="msg-line" data-delay="11400">Thank you for every sacrifice you've made,</span>
-    <span class="msg-line" data-delay="12000">every laugh we've shared, and every moment</span>
-    <span class="msg-line" data-delay="12600">you've stood by my side.</span>
-    <span class="msg-line" data-delay="13400">&nbsp;</span>
-    <span class="msg-line bold-line" data-delay="13800">You are truly a gift from Allah to me. 🤍</span>
-    <span class="msg-line" data-delay="14600">&nbsp;</span>
-    <span class="msg-line" data-delay="15000">Wishing you a year ahead filled with beautiful moments,</span>
-    <span class="msg-line" data-delay="15700">successful endeavors, and the joy that comes</span>
-    <span class="msg-line" data-delay="16300">from being close to those you love.</span>
-    <span class="msg-line" data-delay="17100">&nbsp;</span>
-    <span class="msg-line" data-delay="17500">May your days be as bright as your spirit</span>
-    <span class="msg-line" data-delay="18100">and your nights as peaceful as your soul.</span>
-    <span class="msg-line" data-delay="18900">&nbsp;</span>
-    <span class="msg-line highlight" data-delay="19500">Happy Birthday, Bhaya! <span class="msg-emoji">🎂</span><span class="msg-emoji">✨</span></span>
+<!-- FINAL SCREEN -->
+<div id="finalScreen">
+  <div class="final-bg"></div>
+  <div class="final-inner">
+    <span class="final-moon">🌙</span>
+    <h2 class="final-h">Happy Birthday<br>Bhaya! 🎂✨</h2>
+    <div class="final-div"></div>
+    <p class="final-msg">Aap hain to duniya roshni se bhari lagti hai.<br>Allah aap ko hamesha khush rakhe. 🤍</p>
+    <div class="final-treat">
+      Bhaya! Aaj Ekathe iftari bahir karege –<br>
+      aur treat bhi to aap se leni hai! 🍕
+    </div>
+    <br>
+    <a href="index.html" class="back-link">← Wapas Jayen</a>
   </div>
-
-  <div class="cta-wrap" id="ctaWrap">
-    <a href="slideshow.html" class="cta-btn">Aage Chalo →</a>
-  </div>
-
 </div>
 
 <script>
-// Generate stars
-const starsContainer = document.querySelector('.stars-bg');
-for (let i = 0; i < 150; i++) {
-  const star = document.createElement('div');
-  star.className = 'star';
-  const size = Math.random() * 2.5 + 0.5;
-  star.style.cssText = `
-    width: ${size}px; height: ${size}px;
-    left: ${Math.random() * 100}%;
-    top: ${Math.random() * 100}%;
-    --dur: ${Math.random() * 4 + 2}s;
-    --op: ${Math.random() * 0.7 + 0.3};
-    animation-delay: ${Math.random() * 4}s;
-  `;
-  starsContainer.appendChild(star);
-}
+// ── Images ──────────────────────────────────────────────────
+const IMGS = [
+  '1771597662317_birthday_04.jpg',
+  '1771597662318_birthday_05.jpg',
+  '1771597662319_birthday_06.jpg',
+  '1771597662319_birthday_07.jpg',
+  '1771597662320_birthday_09.jpg',
+  '1771597662320_birthday_10.jpg',
+  '1771597662320_birthday_11.jpg',
+  '1771597662321_birthday_12.jpg',
+  '1771597662321_birthday_15.jpg',
+  '1771597662322_birthday_16.jpg',
+  '1771597662322_birthday_17.jpg',
+  '1771597662323_birthday_19.jpg',
+  '1771597662323_birthday_20.jpg',
+  '1771597662324_birthday_21.jpg',
+  '1771597662324_birthday_22.jpg',
+  '1771597662324_birthday_23.jpg',
+  '1771597662325_birthday_24.jpg',
+  '1771597662325_birthday_25.jpg',
+  '1771597662325_birthday_27.jpg',
+];
+const DURATION = 1000;
 
-// Floating particles
-const particles = ['✦', '☽', '✨', '⭐', '🌟', '✦'];
-for (let i = 0; i < 8; i++) {
-  const p = document.createElement('div');
-  p.className = 'particle';
-  p.textContent = particles[Math.floor(Math.random() * particles.length)];
-  p.style.cssText = `
-    left: ${Math.random() * 95 + 2.5}%;
-    --dur: ${Math.random() * 12 + 15}s;
-    --delay: ${Math.random() * 8}s;
-  `;
-  document.body.appendChild(p);
-}
+// ── Intro stars ─────────────────────────────────────────────
+(function() {
+  const bg = document.getElementById('introStarsBg');
+  for (let i = 0; i < 90; i++) {
+    const s = document.createElement('div');
+    const sz = (Math.random() * 2 + 0.5).toFixed(1);
+    s.className = 'istar';
+    s.style.cssText = 'width:'+sz+'px;height:'+sz+'px;left:'+(Math.random()*100).toFixed(1)+'%;top:'+(Math.random()*100).toFixed(1)+'%;--d:'+(Math.random()*3+2).toFixed(1)+'s;--s:'+(Math.random()*4).toFixed(1)+'s;--o:'+(Math.random()*0.5+0.2).toFixed(2)+';';
+    bg.appendChild(s);
+  }
+})();
 
-// Animate message lines
-const lines = document.querySelectorAll('.msg-line');
-lines.forEach(line => {
-  const delay = parseInt(line.dataset.delay) || 0;
-  setTimeout(() => {
-    line.classList.add('visible');
-  }, delay);
+// ── Build slides ────────────────────────────────────────────
+const container = document.getElementById('slideshow');
+IMGS.forEach(function(src, i) {
+  const div = document.createElement('div');
+  div.className = 'slide' + (i === 0 ? ' active' : '');
+  div.setAttribute('data-index', i);
+  const img = document.createElement('img');
+  img.src = src;
+  img.alt = '';
+  div.appendChild(img);
+  container.appendChild(div);
 });
+const slides = container.querySelectorAll('.slide');
 
-// Show CTA after all lines
-const maxDelay = Math.max(...Array.from(lines).map(l => parseInt(l.dataset.delay) || 0));
-setTimeout(() => {
-  document.getElementById('ctaWrap').classList.add('show');
-}, maxDelay + 1200);
+// ── Slideshow ────────────────────────────────────────────────
+var current = 0;
+var slideTimer = null;
+var progStart = null;
+var progRaf = null;
+var pBar = document.getElementById('progressBar');
+
+function runProgress() {
+  if (!progStart) progStart = Date.now();
+  var pct = Math.min(((Date.now() - progStart) / DURATION) * 100, 100);
+  pBar.style.width = pct + '%';
+  if (pct < 100) {
+    progRaf = requestAnimationFrame(runProgress);
+  }
+}
+
+function startProgress() {
+  cancelAnimationFrame(progRaf);
+  pBar.style.width = '0%';
+  progStart = null;
+  progRaf = requestAnimationFrame(runProgress);
+}
+
+function goTo(n) {
+  slides[current].classList.remove('active');
+  current = n;
+  slides[current].classList.add('active');
+  startProgress();
+}
+
+function tick() {
+  if (current < slides.length - 1) {
+    goTo(current + 1);
+    slideTimer = setTimeout(tick, DURATION);
+  } else {
+    showFinal();
+  }
+}
+
+function startSlideshow() {
+  goTo(0);
+  slideTimer = setTimeout(tick, DURATION);
+}
+
+// ── Final screen ─────────────────────────────────────────────
+function showFinal() {
+  clearTimeout(slideTimer);
+  cancelAnimationFrame(progRaf);
+  setTimeout(function() {
+    document.getElementById('finalScreen').classList.add('show');
+    confetti();
+    fadeOutMusic();
+    setTimeout(endMusic, 600);
+  }, 800);
+}
+
+// ── Confetti ─────────────────────────────────────────────────
+function confetti() {
+  var colors = ['#D4AF37','#F5E196','#FF6B9D','#7FCEEE','#98FB98','#FFB347'];
+  for (var i = 0; i < 65; i++) {
+    (function() {
+      var c = document.createElement('div');
+      c.className = 'cf';
+      c.style.cssText = 'left:'+(Math.random()*100).toFixed(1)+'%;top:-10px;width:'+(Math.random()*6+4).toFixed(0)+'px;height:'+(Math.random()*6+4).toFixed(0)+'px;background:'+colors[Math.floor(Math.random()*colors.length)]+';border-radius:'+(Math.random()>0.5?'50%':'2px')+';--d:'+(Math.random()*3+2).toFixed(1)+'s;--s:'+(Math.random()*2).toFixed(1)+'s;--tx:'+((Math.random()-0.5)*160).toFixed(0)+'px;';
+      document.body.appendChild(c);
+      setTimeout(function(){ c.remove(); }, 8000);
+    })();
+  }
+}
+
+// ── Audio ─────────────────────────────────────────────────────
+var ctx = null;
+var mGain = null;
+
+var NOTES = [
+  [261.63,0.30],[261.63,0.15],[293.66,0.45],[261.63,0.45],[349.23,0.45],[329.63,0.85],
+  [261.63,0.30],[261.63,0.15],[293.66,0.45],[261.63,0.45],[392.00,0.45],[349.23,0.85],
+  [261.63,0.30],[261.63,0.15],[523.25,0.45],[440.00,0.45],[349.23,0.45],[329.63,0.45],[293.66,0.85],
+  [466.16,0.30],[466.16,0.15],[440.00,0.45],[349.23,0.45],[392.00,0.45],[349.23,1.10]
+];
+
+function notesDuration() {
+  return NOTES.reduce(function(a,n){ return a+n[1]; }, 0);
+}
+
+function playNotes(gainNode, startT) {
+  var t = startT;
+  NOTES.forEach(function(n) {
+    var freq = n[0], dur = n[1];
+    var o = ctx.createOscillator();
+    var g = ctx.createGain();
+    o.type = 'triangle';
+    o.frequency.value = freq;
+    g.gain.setValueAtTime(0, t);
+    g.gain.linearRampToValueAtTime(0.5, t + 0.025);
+    g.gain.setValueAtTime(0.5, t + dur * 0.72);
+    g.gain.linearRampToValueAtTime(0, t + dur);
+    o.connect(g); g.connect(gainNode);
+    o.start(t); o.stop(t + dur + 0.05);
+
+    // soft harmonic
+    var o2 = ctx.createOscillator();
+    var g2 = ctx.createGain();
+    o2.type = 'sine';
+    o2.frequency.value = freq * 2;
+    g2.gain.setValueAtTime(0, t);
+    g2.gain.linearRampToValueAtTime(0.12, t + 0.03);
+    g2.gain.linearRampToValueAtTime(0, t + dur);
+    o2.connect(g2); g2.connect(gainNode);
+    o2.start(t); o2.stop(t + dur + 0.05);
+
+    t += dur;
+  });
+  return t;
+}
+
+var looping = false;
+function startMusic() {
+  if (!ctx) return;
+  looping = true;
+  mGain = ctx.createGain();
+  mGain.gain.setValueAtTime(0, ctx.currentTime);
+  mGain.gain.linearRampToValueAtTime(0.38, ctx.currentTime + 0.7);
+  mGain.connect(ctx.destination);
+
+  var nextT = playNotes(mGain, ctx.currentTime + 0.2);
+
+  function loop() {
+    if (!looping) return;
+    nextT = playNotes(mGain, nextT + 0.35);
+    var wait = (nextT - ctx.currentTime - 2) * 1000;
+    setTimeout(loop, Math.max(wait, 50));
+  }
+  setTimeout(loop, (notesDuration() - 1.5) * 1000);
+}
+
+function fadeOutMusic() {
+  looping = false;
+  if (mGain && ctx) {
+    try {
+      mGain.gain.setValueAtTime(mGain.gain.value, ctx.currentTime);
+      mGain.gain.linearRampToValueAtTime(0, ctx.currentTime + 0.8);
+    } catch(e){}
+  }
+}
+
+function endMusic() {
+  if (!ctx) return;
+  var g = ctx.createGain();
+  g.gain.setValueAtTime(0, ctx.currentTime);
+  g.gain.linearRampToValueAtTime(0.32, ctx.currentTime + 0.5);
+  g.connect(ctx.destination);
+  playNotes(g, ctx.currentTime + 0.2);
+}
+
+// ── Open gift — MUST be in user gesture for iOS AudioContext ──
+function openGift() {
+  var intro = document.getElementById('giftIntro');
+  intro.classList.add('hide');
+
+  // AudioContext INSIDE click handler — required by iOS Safari
+  try {
+    ctx = new (window.AudioContext || window.webkitAudioContext)();
+    if (ctx.state === 'suspended') ctx.resume();
+  } catch(e) {}
+
+  setTimeout(function() {
+    intro.style.display = 'none';
+    startSlideshow();
+    startMusic();
+  }, 1000);
+}
 </script>
-
 </body>
 </html>
